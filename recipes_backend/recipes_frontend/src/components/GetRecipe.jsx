@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import "./style.css";
 
 const GetRecipe = () => {
   const { id } = useParams();
@@ -17,12 +18,9 @@ const GetRecipe = () => {
   }, []);
 
   return (
-    <div style={{ width: "750px" }}>
+    <div className="container">
       <div>
         <h1>Get Recipe</h1>
-      </div>
-      <div>
-        <p style={{ marginRight: "15px" }}>Random Note</p>
       </div>
       <hr />
       <div style={{ textAlign: "start" }}>

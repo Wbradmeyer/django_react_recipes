@@ -1,0 +1,11 @@
+#navbar {
+    display: "flex";
+    justify-content: "space-around";
+    align-items: "center";
+}
+
+.container {
+    width: 800px;
+    border: 1px solid black;
+    padding: 20px;
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./style.css";
 
 const AllRecipes = () => {
   const [allRecipes, setAllRecipes] = useState([]);
@@ -16,15 +17,14 @@ const AllRecipes = () => {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <h1>Recipes</h1>
       <hr />
       <div style={{ textAlign: "left" }}>
         {allRecipes.map((thisRecipe) => (
           <div key={thisRecipe.id}>
-            <h2>{thisRecipe.name}</h2>
-            <p>{thisRecipe.cook_minutes}</p>
-            <p>Added on {thisRecipe.created_at}</p>
+            <h2>Recipe Name: {thisRecipe.name}</h2>
+            <p>Cook Time: {thisRecipe.cook_minutes} minutes</p>
             <Link to={`/recipes/${thisRecipe.id}`}>View</Link>
           </div>
         ))}
