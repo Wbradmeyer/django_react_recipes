@@ -9,3 +9,21 @@
     border: 1px solid black;
     padding: 20px;
 }
+
+form {
+    width: 300px;
+    text-align: left;
+}
+
+.fields {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input {
+    width: 200px;
+    height: 30px;
+    border-radius: 8px;
+    border: 1px solid black;
+}
