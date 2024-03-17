@@ -1,9 +1,11 @@
 import { React, useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./style.css";
+import AllRecipes from "./AllRecipes";
 
 const GetRecipe = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [thisRecipe, setThisRecipe] = useState({});
 
@@ -17,6 +19,17 @@ const GetRecipe = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleDelete = (e, id) => {
+    e.preventDefault();
+    axios
+      .delete(`http://localhost:8000/api/recipes/delete/${id}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+    navigate("/recipes");
+  };
+
   return (
     <div className="container">
       <div>
@@ -26,6 +39,7 @@ const GetRecipe = () => {
       <div style={{ textAlign: "start" }}>
         <h2>{thisRecipe.name}</h2>
         <p>{thisRecipe.cook_minutes}</p>
+        <button onClick={(e) => handleDelete(e, thisRecipe.id)}>Delete</button>
       </div>
     </div>
   );

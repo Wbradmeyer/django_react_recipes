@@ -27,8 +27,9 @@ const RecipeForm = (props) => {
         navigate("/recipes");
       })
       .catch((err) => {
-        console.log(er.response.data.error.errors);
-        setError(err.response.data.error.errors);
+        navigate("/recipes");
+        // console.log(err.response.data.error.errors);
+        // setError(err.response.data.error.errors);
       });
   };
 
@@ -39,6 +40,7 @@ const RecipeForm = (props) => {
         <form onSubmit={onSubmitHandler}>
           <p className="fields">
             <label>Name</label>
+            {error.name ? <p>{error.name.message}</p> : null}
             <input
               type="text"
               name="name"
@@ -48,6 +50,7 @@ const RecipeForm = (props) => {
           </p>
           <p className="fields">
             <label>Cook Time</label>
+            {error.cook_minutes ? <p>{error.cook_minutes.message}</p> : null}
             <input
               type="number"
               name="cook_minutes"
