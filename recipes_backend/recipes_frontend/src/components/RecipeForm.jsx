@@ -3,9 +3,8 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import "./style.css";
 
-const RecipeForm = (props) => {
+const RecipeForm = () => {
   const navigate = useNavigate();
-  const { allRecipes, setAllRecipes } = props;
   const [recipe, setRecipe] = useState({
     name: "",
     cook_minutes: "",
@@ -21,15 +20,15 @@ const RecipeForm = (props) => {
     axios
       .post("http://localhost:8000/api/recipes/add", recipe)
       .then((res) => {
-        console.log(res);
         console.log(res.data);
-        setAllRecipes([...allRecipes], res.data);
-        navigate("/recipes");
+        if (res.data.id) {
+          navigate("/recipes");
+        } else {
+          setError(res.data);
+        }
       })
       .catch((err) => {
-        navigate("/recipes");
-        // console.log(err.response.data.error.errors);
-        // setError(err.response.data.error.errors);
+        console.log(err);
       });
   };
 
@@ -38,9 +37,12 @@ const RecipeForm = (props) => {
       <h1>Add a Recipe</h1>
       <div>
         <form onSubmit={onSubmitHandler}>
+          {error.name_error ? (
+            <p className="error">{error.name_error}</p>
+          ) : null}
+          {error.name ? <p className="error">{error.name}</p> : null}
           <p className="fields">
             <label>Name</label>
-            {error.name ? <p>{error.name.message}</p> : null}
             <input
               type="text"
               name="name"
@@ -48,9 +50,14 @@ const RecipeForm = (props) => {
               className="input"
             />
           </p>
+          {error.time_error ? (
+            <p className="error">{error.time_error}</p>
+          ) : null}
+          {error.cook_minutes ? (
+            <p className="error">{error.cook_minutes}</p>
+          ) : null}
           <p className="fields">
             <label>Cook Time</label>
-            {error.cook_minutes ? <p>{error.cook_minutes.message}</p> : null}
             <input
               type="number"
               name="cook_minutes"

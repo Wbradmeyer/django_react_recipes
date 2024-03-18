@@ -2,7 +2,6 @@ import { React, useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./style.css";
-import AllRecipes from "./AllRecipes";
 
 const GetRecipe = () => {
   const navigate = useNavigate();

@@ -11,7 +11,7 @@
 }
 
 form {
-    width: 300px;
+    width: 350px;
     text-align: left;
 }
 
@@ -22,8 +22,13 @@ form {
 }
 
 .input {
-    width: 200px;
+    width: 250px;
     height: 30px;
     border-radius: 8px;
     border: 1px solid black;
+}
+
+.error {
+    color: red;
+    text-shadow: 0.5px 0.5px 1px black;
 }

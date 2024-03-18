@@ -18,8 +18,9 @@ def get_recipe_by_id(request, id):
 @api_view(['POST'])
 def add_recipe(request):
     serializer = RecipeSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
+    if not serializer.is_valid():
+        return Response(serializer.errors)
+    serializer.save()
     return Response(serializer.data)
 
 @api_view(['POST'])
