@@ -38,6 +38,9 @@ const GetRecipe = () => {
       <div style={{ textAlign: "start" }}>
         <h2>{thisRecipe.name}</h2>
         <p>{thisRecipe.cook_minutes}</p>
+        <button>
+          <Link to={`/recipes/update/${thisRecipe.id}`}>Update Recipe</Link>
+        </button>
         <button onClick={(e) => handleDelete(e, thisRecipe.id)}>Delete</button>
       </div>
     </div>

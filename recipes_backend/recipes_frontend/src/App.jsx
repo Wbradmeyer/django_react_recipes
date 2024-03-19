@@ -6,6 +6,7 @@ import Index from "./components/Index";
 import GetRecipe from "./components/GetRecipe";
 import AllRecipes from "./components/AllRecipes";
 import RecipeForm from "./components/RecipeForm";
+import UpdateRecipe from "./components/UpdateRecipes";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/recipes" element={<AllRecipes />} />
             <Route path="/recipes/add" element={<RecipeForm />} />
             <Route path="/recipes/:id" element={<GetRecipe />} />
+            <Route path="/recipes/update/:id" element={<UpdateRecipe />} />
           </Routes>
         </div>
       </BrowserRouter>
