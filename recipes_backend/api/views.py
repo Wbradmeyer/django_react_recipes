@@ -27,8 +27,9 @@ def add_recipe(request):
 def update_recipe(request, id):
     recipe = Recipe.objects.get(id=id)
     serializer = RecipeSerializer(instance=recipe, data=request.data)
-    if serializer.is_valid():
-        serializer.save()
+    if not serializer.is_valid():
+        return Response(serializer.errors)
+    serializer.save()
     return Response(serializer.data)
 
 @api_view(['DELETE'])
