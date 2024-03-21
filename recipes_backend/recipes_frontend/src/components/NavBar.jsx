@@ -7,14 +7,27 @@ const NavBar = () => {
     <div
       style={{
         display: "flex",
-        justifyContent: "space-around",
+        justifyContent: "space-between",
         alignItems: "center",
       }}
     >
       <h2>Recipe App</h2>
-      <Link to={"/"}>Index</Link>
-      <Link to={"/recipes"}>Dashboard</Link>
-      <Link to={"/recipes/add"}>Add Recipe</Link>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <Link to={"/"} className="link">
+          Index
+        </Link>
+        <Link to={"/recipes"} className="link">
+          Dashboard
+        </Link>
+        <Link to={"/recipes/add"} className="link">
+          Add Recipe
+        </Link>
+      </div>
     </div>
   );
 };
