@@ -57,7 +57,11 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #d8d1c9;
+    /* background-color: #d8d1c9; */
+    background-image: url("./assets/cooking.jpg");
+    background-position: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   a:hover {
     color: #747bff;
