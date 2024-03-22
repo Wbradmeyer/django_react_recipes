@@ -1,13 +1,21 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework import generics
+from rest_framework import pagination
+from rest_framework.pagination import PageNumberPagination
 from recipes.models import Recipe
 from .serializers import RecipeSerializer
 
-@api_view(['GET'])
-def get_all_recipes(request):
-    recipes = Recipe.objects.all()
-    serializer = RecipeSerializer(recipes, many=True)
-    return Response(serializer.data)
+class RecipeListView(generics.ListAPIView):
+    queryset = Recipe.objects.all()
+    serializer_class = RecipeSerializer
+    pagination_class = PageNumberPagination
+
+# @api_view(['GET'])
+# def get_all_recipes(request):
+#     recipes = Recipe.objects.all()
+#     serializer = RecipeSerializer(recipes, many=True)
+#     return Response(serializer.data)
 
 @api_view(['GET'])
 def get_recipe_by_id(request, id):

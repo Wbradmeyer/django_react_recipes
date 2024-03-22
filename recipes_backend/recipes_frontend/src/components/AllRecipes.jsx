@@ -11,7 +11,7 @@ const AllRecipes = () => {
       .get("http://localhost:8000/api/recipes")
       .then((res) => {
         console.log(res);
-        setAllRecipes(res.data);
+        setAllRecipes(res.data.results);
       })
       .catch((err) => console.log(err));
   }, []);
