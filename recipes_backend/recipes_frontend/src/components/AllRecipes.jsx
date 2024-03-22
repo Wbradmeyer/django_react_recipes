@@ -20,9 +20,9 @@ const AllRecipes = () => {
     <div className="container">
       <h1>Recipes</h1>
       <hr />
-      <div style={{ textAlign: "left" }}>
+      <div className="recipes">
         {allRecipes.map((thisRecipe) => (
-          <div key={thisRecipe.id}>
+          <div key={thisRecipe.id} className="recipe-card">
             <h2>Recipe Name: {thisRecipe.name}</h2>
             <p>Cook Time: {thisRecipe.cook_minutes} minutes</p>
             <Link to={`/recipes/${thisRecipe.id}`}>View</Link>

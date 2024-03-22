@@ -1,6 +1,7 @@
 import { React, useEffect, useState } from "react";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import axios from "axios";
+import "./style.css";
 
 const UpdateRecipe = () => {
   const navigate = useNavigate();

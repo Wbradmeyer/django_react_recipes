@@ -66,7 +66,7 @@ const RecipeForm = () => {
             />
           </p>
 
-          <button>Add</button>
+          <button className="add-btn">Add</button>
         </form>
       </div>
     </div>
