@@ -2,6 +2,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import generics
 from rest_framework import pagination
+from rest_framework import status
 from rest_framework.pagination import PageNumberPagination
 from recipes.models import Recipe
 from .serializers import RecipeSerializer
@@ -26,6 +27,7 @@ def get_recipe_by_id(request, id):
 @api_view(['POST'])
 def add_recipe(request):
     serializer = RecipeSerializer(data=request.data)
+    print(repr(serializer))
     if not serializer.is_valid():
         return Response(serializer.errors)
     serializer.save()
@@ -35,10 +37,14 @@ def add_recipe(request):
 def update_recipe(request, id):
     recipe = Recipe.objects.get(id=id)
     serializer = RecipeSerializer(instance=recipe, data=request.data)
-    if not serializer.is_valid():
-        return Response(serializer.errors)
-    serializer.save()
-    return Response(serializer.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    # if not serializer.is_valid():
+    #     return Response(serializer.errors)
+    # serializer.save()
+    # return Response(serializer.data)
 
 @api_view(['DELETE'])
 def delete_recipe(request, id):

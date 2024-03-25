@@ -20,12 +20,15 @@ const RecipeForm = () => {
     axios
       .post("http://localhost:8000/api/recipes/add", recipe)
       .then((res) => {
-        console.log(res.data);
-        if (res.data.id) {
-          navigate("/recipes");
-        } else {
-          setError(res.data);
-        }
+        console.log(res);
+        navigate("/recipes");
+
+        // console.log(res.data);
+        // if (res.data.id) {
+        //   navigate("/recipes");
+        // } else {
+        //   setError(res.data);
+        // }
       })
       .catch((err) => {
         console.log(err);
