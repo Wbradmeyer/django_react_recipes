@@ -22,16 +22,11 @@ const RecipeForm = () => {
       .then((res) => {
         console.log(res);
         navigate("/recipes");
-
-        // console.log(res.data);
-        // if (res.data.id) {
-        //   navigate("/recipes");
-        // } else {
-        //   setError(res.data);
-        // }
       })
       .catch((err) => {
         console.log(err);
+        console.log(err.response.data);
+        setError(err.response.data);
       });
   };
 

@@ -27,11 +27,14 @@ def get_recipe_by_id(request, id):
 @api_view(['POST'])
 def add_recipe(request):
     serializer = RecipeSerializer(data=request.data)
-    print(repr(serializer))
-    if not serializer.is_valid():
-        return Response(serializer.errors)
-    serializer.save()
-    return Response(serializer.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    # if not serializer.is_valid():
+    #     return Response(serializer.errors)
+    # serializer.save()
+    # return Response(serializer.data)
 
 @api_view(['POST'])
 def update_recipe(request, id):
