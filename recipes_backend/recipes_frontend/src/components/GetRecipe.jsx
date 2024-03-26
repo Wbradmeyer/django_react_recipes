@@ -35,7 +35,7 @@ const GetRecipe = () => {
         <h1>Get Recipe</h1>
       </div>
       <hr />
-      <div style={{ textAlign: "center" }}>
+      <div id="one-recipe">
         <div className="recipe-card">
           <h2 className="card-title">Name: {thisRecipe.name}</h2>
           <p className="info">Cook Time: {thisRecipe.cook_minutes}</p>
