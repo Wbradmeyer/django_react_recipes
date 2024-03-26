@@ -35,18 +35,21 @@ const GetRecipe = () => {
         <h1>Get Recipe</h1>
       </div>
       <hr />
-      <div className="recipe-card">
-        <h2>Name: {thisRecipe.name}</h2>
-        <p>Cook Time: {thisRecipe.cook_minutes}</p>
-        <button className="update-btn">
-          <Link to={`/recipes/update/${thisRecipe.id}`}>Update</Link>
-        </button>
-        <button
-          onClick={(e) => handleDelete(e, thisRecipe.id)}
-          className="delete-btn"
-        >
-          Delete
-        </button>
+      <div style={{ textAlign: "center" }}>
+        <div className="recipe-card">
+          <h2 className="card-title">Name: {thisRecipe.name}</h2>
+          <p className="info">Cook Time: {thisRecipe.cook_minutes}</p>
+          <p className="info">Instructions</p>
+          <button className="update-btn">
+            <Link to={`/recipes/update/${thisRecipe.id}`}>Update</Link>
+          </button>
+          <button
+            onClick={(e) => handleDelete(e, thisRecipe.id)}
+            className="delete-btn"
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   );

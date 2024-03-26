@@ -40,8 +40,9 @@ const AllRecipes = () => {
       <div className="recipes">
         {allRecipes.map((thisRecipe) => (
           <div key={thisRecipe.id} className="recipe-card">
-            <h2>Recipe Name: {thisRecipe.name}</h2>
-            <p>Cook Time: {thisRecipe.cook_minutes} minutes</p>
+            <h2 className="card-title">Recipe Name: {thisRecipe.name}</h2>
+            <p className="info">Cook Time: {thisRecipe.cook_minutes} minutes</p>
+            <p className="info">Instructions</p>
             <Link to={`/recipes/${thisRecipe.id}`}>View</Link>
           </div>
         ))}

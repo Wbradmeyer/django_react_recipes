@@ -44,14 +44,24 @@ form {
     width: 350px;
     text-align: left;
     padding: 10px;
-    background-color: rgb(126, 151, 151, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 15px;
     box-shadow: 0px 0px 10px black;
     margin: 10px;
 }
 
+.card-title {
+    margin: 0px;
+    border-bottom: 3px solid rgb(205, 45, 98);
+}
+
+.info {
+    margin: 0px;
+    border-bottom: 1px solid rgb(58, 58, 214);
+}
+
 .update-btn {
-    margin: 0 10px 0 0;
+    margin-right: 10px;
     background-color: rgb(255, 255, 180);
     box-shadow: 0 3px 5px black;
 }

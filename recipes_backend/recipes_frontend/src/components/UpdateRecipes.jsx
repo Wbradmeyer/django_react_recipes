@@ -35,9 +35,9 @@ const UpdateRecipe = () => {
         navigate("/recipes");
       })
       .catch((err) => {
-        // need to adjust this, probably Django REST sending an error to access these catches
-        console.log(res.data);
-        setError(res.data);
+        console.log(err);
+        console.log(err.response.data);
+        setError(err.response.data);
       });
   };
 
