@@ -17,7 +17,7 @@
 }
 
 form {
-    width: 350px;
+    max-width: 350px;
     text-align: left;
 }
 
@@ -32,11 +32,17 @@ form {
     margin: 0px 0px 0px 200px;
 }
 
-.input {
+.input, .search-input {
     width: 250px;
     height: 30px;
     border-radius: 8px;
     border: 1px solid black;
+}
+
+.search-input {
+    width: 200px;
+    margin: 0px;
+    display: block;
 }
 
 .error {

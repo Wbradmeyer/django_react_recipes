@@ -28,6 +28,9 @@ const NavBar = () => {
           <Link to={"/recipes/add"} className="link">
             Add Recipe
           </Link>
+          <Link to={"/recipes/search"} className="link">
+            Search Recipes
+          </Link>
         </div>
       </div>
     </div>
