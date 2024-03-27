@@ -9,6 +9,7 @@ const SearchRecipes = () => {
     letterSearch: "",
     categorySearch: "",
   });
+  // let [index, setIndex] = useState(0);
   const [error, setError] = useState(null);
 
   const searchUrls = [
@@ -18,7 +19,21 @@ const SearchRecipes = () => {
   ];
 
   const handleVals = (e) => {
-    setSearch({ ...search, [e.target.name]: e.target.value });
+    // console.log(e.target.name);
+    setSearch((prevSearch) => ({
+      ...prevSearch,
+      [e.target.name]: e.target.value,
+    }));
+    // if (search.nameSearch) {
+    //   console.log("name is not empty");
+    //   setIndex(0);
+    // } else if (search.letterSearch) {
+    //   console.log("letter is not empty");
+    //   setIndex(1);
+    // } else {
+    //   setIndex(0);
+    // }
+    // console.log(index);
   };
 
   const onSubmitHandler = (e) => {
@@ -80,59 +95,23 @@ const SearchRecipes = () => {
     }
   };
 
-  const mealNameSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .get(
-        `https://www.themealdb.com/api/json/v1/1/search.php?s=${search.nameSearch}`
-      )
-      .then((res) => {
-        console.log(res);
-        setSearchedRecipes(res.data.meals);
-        setError(null);
-      })
-      .catch((err) => {
-        console.log(err);
-        setError(err);
-        setSearchedRecipes([]);
-      });
-  };
-
-  const firstLetterSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .get(
-        `https://www.themealdb.com/api/json/v1/1/search.php?f=${search.letterSearch}`
-      )
-      .then((res) => {
-        console.log(res);
-        setSearchedRecipes(res.data.meals);
-        setError(null);
-      })
-      .catch((err) => {
-        console.log(err);
-        setError(err);
-        setSearchedRecipes([]);
-      });
-  };
-
-  const categorySubmit = (e) => {
-    e.preventDefault();
-    axios
-      .get(
-        `https://www.themealdb.com/api/json/v1/1/filter.php?c=${search.categorySearch}`
-      )
-      .then((res) => {
-        console.log(res);
-        setSearchedRecipes(res.data.meals);
-        setError(null);
-      })
-      .catch((err) => {
-        console.log(err);
-        setError(err);
-        setSearchedRecipes([]);
-      });
-  };
+  // const categorySubmit = (e) => {
+  //   e.preventDefault();
+  //   axios
+  //     .get(
+  //       `https://www.themealdb.com/api/json/v1/1/filter.php?c=${search.categorySearch}`
+  //     )
+  //     .then((res) => {
+  //       console.log(res);
+  //       setSearchedRecipes(res.data.meals);
+  //       setError(null);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //       setError(err);
+  //       setSearchedRecipes([]);
+  //     });
+  // };
 
   return (
     <div className="container">
@@ -151,9 +130,6 @@ const SearchRecipes = () => {
               />
             </label>
           </p>
-          <button type="submit">Search</button>
-        </form>
-        <form onSubmit={onSubmitHandler}>
           <p className="fields">
             <label>
               Search by first letter
@@ -167,6 +143,8 @@ const SearchRecipes = () => {
           </p>
           <button type="submit">Search</button>
         </form>
+
+        {/* change this to a list of all categories with useEffect, then click link */}
         <form onSubmit={onSubmitHandler}>
           <p className="fields">
             <label>
