@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import axios from "axios";
 import "./style.css";
 
@@ -9,14 +9,28 @@ const SearchRecipes = () => {
     letterSearch: "",
     categorySearch: "",
   });
+  const [categories, setCategories] = useState([]);
+  const [secondColumnStart, setSecondColumnStart] = useState(0);
   // let [index, setIndex] = useState(0);
   const [error, setError] = useState(null);
 
   const searchUrls = [
     `https://www.themealdb.com/api/json/v1/1/search.php?s=${search.nameSearch}`,
     `https://www.themealdb.com/api/json/v1/1/search.php?f=${search.letterSearch}`,
-    `https://www.themealdb.com/api/json/v1/1/filter.php?c=${search.categorySearch}`,
+    "https://www.themealdb.com/api/json/v1/1/categories.php",
+    `https://www.themealdb.com/api/json/v1/1/filter.php?c=`,
   ];
+
+  useEffect(() => {
+    axios
+      .get(searchUrls[2])
+      .then((res) => {
+        console.log(res);
+        setCategories(res.data.categories);
+        setSecondColumnStart(Math.ceil(res.data.categories.length / 2));
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleVals = (e) => {
     // console.log(e.target.name);
@@ -74,44 +88,24 @@ const SearchRecipes = () => {
           setError(err);
           setSearchedRecipes([]);
         });
-    } else {
-      axios
-        .get(searchUrls[2])
-        .then((res) => {
-          console.log(res);
-          setSearchedRecipes(res.data.meals);
-          setSearch({
-            nameSearch: "",
-            letterSearch: "",
-            categorySearch: "",
-          });
-          setError(null);
-        })
-        .catch((err) => {
-          console.log(err);
-          setError(err);
-          setSearchedRecipes([]);
-        });
     }
   };
 
-  // const categorySubmit = (e) => {
-  //   e.preventDefault();
-  //   axios
-  //     .get(
-  //       `https://www.themealdb.com/api/json/v1/1/filter.php?c=${search.categorySearch}`
-  //     )
-  //     .then((res) => {
-  //       console.log(res);
-  //       setSearchedRecipes(res.data.meals);
-  //       setError(null);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       setError(err);
-  //       setSearchedRecipes([]);
-  //     });
-  // };
+  const categorySearch = (e, categoryName) => {
+    e.preventDefault();
+    axios
+      .get(searchUrls[3] + categoryName)
+      .then((res) => {
+        console.log(res);
+        setSearchedRecipes(res.data.meals);
+        setError(null);
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err);
+        setSearchedRecipes([]);
+      });
+  };
 
   return (
     <div className="container">
@@ -145,7 +139,25 @@ const SearchRecipes = () => {
         </form>
 
         {/* change this to a list of all categories with useEffect, then click link */}
-        <form onSubmit={onSubmitHandler}>
+        <div className="categories-box">
+          <div className="column">
+            {categories.slice(0, secondColumnStart).map((category) => (
+              <div key={category.idCategory}>
+                <p onClick={(e) => categorySearch(e, category.strCategory)}>
+                  {category.strCategory}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="column">
+            {categories.slice(secondColumnStart).map((category) => (
+              <div key={category.idCategory}>
+                <p>{category.strCategory}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* <form onSubmit={onSubmitHandler}>
           <p className="fields">
             <label>
               Search by category
@@ -158,7 +170,7 @@ const SearchRecipes = () => {
             </label>
           </p>
           <button type="submit">Search</button>
-        </form>
+        </form> */}
       </div>
       <hr />
       <div>

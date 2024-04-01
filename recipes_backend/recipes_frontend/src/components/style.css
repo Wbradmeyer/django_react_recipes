@@ -33,6 +33,15 @@ form {
     justify-content: space-around;
 }
 
+.categories-box {
+    border: 1px solid black;
+    display: flex;
+}
+
+.column {
+    margin: 0px 10px;
+}
+
 #one-recipe {
     margin: 0px 0px 0px 200px;
 }
