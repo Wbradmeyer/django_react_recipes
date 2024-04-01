@@ -1,0 +1,7 @@
+Todo List:
+
+- useEffect to bring in categories, each is a link?
+
+- Each search recipe includes a link to view the card, recipe ID
+
+- Add cooking instructions and ingredients to Model, amounts?
