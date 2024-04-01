@@ -28,6 +28,11 @@ form {
     align-items: center;
 }
 
+.search-entries {
+    display: flex;
+    justify-content: space-around;
+}
+
 #one-recipe {
     margin: 0px 0px 0px 200px;
 }

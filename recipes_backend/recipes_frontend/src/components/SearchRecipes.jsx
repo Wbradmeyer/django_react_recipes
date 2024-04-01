@@ -116,7 +116,7 @@ const SearchRecipes = () => {
   return (
     <div className="container">
       <h1>Search for Recipes</h1>
-      <div className="recipes">
+      <div className="search-entries">
         <form onSubmit={onSubmitHandler}>
           {error ? <p>Nope, didn't work.</p> : null}
           <p className="fields">
