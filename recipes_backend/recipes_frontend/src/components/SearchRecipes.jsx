@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 const SearchRecipes = () => {
@@ -21,6 +22,7 @@ const SearchRecipes = () => {
     `https://www.themealdb.com/api/json/v1/1/filter.php?c=`,
   ];
 
+  // bring in all searchable recipe categories when the page loads
   useEffect(() => {
     axios
       .get(searchUrls[2])
@@ -50,6 +52,7 @@ const SearchRecipes = () => {
     // console.log(index);
   };
 
+  //
   const onSubmitHandler = (e) => {
     e.preventDefault();
     if (search.nameSearch) {
@@ -137,13 +140,14 @@ const SearchRecipes = () => {
           </p>
           <button type="submit">Search</button>
         </form>
-
-        {/* change this to a list of all categories with useEffect, then click link */}
         <div className="categories-box">
           <div className="column">
             {categories.slice(0, secondColumnStart).map((category) => (
               <div key={category.idCategory}>
-                <p onClick={(e) => categorySearch(e, category.strCategory)}>
+                <p
+                  onClick={(e) => categorySearch(e, category.strCategory)}
+                  className="category"
+                >
                   {category.strCategory}
                 </p>
               </div>
@@ -152,33 +156,25 @@ const SearchRecipes = () => {
           <div className="column">
             {categories.slice(secondColumnStart).map((category) => (
               <div key={category.idCategory}>
-                <p>{category.strCategory}</p>
+                <p
+                  onClick={(e) => categorySearch(e, category.strCategory)}
+                  className="category"
+                >
+                  {category.strCategory}
+                </p>
               </div>
             ))}
           </div>
         </div>
-        {/* <form onSubmit={onSubmitHandler}>
-          <p className="fields">
-            <label>
-              Search by category
-              <input
-                type="text"
-                name="categorySearch"
-                className="search-input"
-                onChange={handleVals}
-              />
-            </label>
-          </p>
-          <button type="submit">Search</button>
-        </form> */}
       </div>
       <hr />
-      <div>
+      <div className="search-results">
         {searchedRecipes.map((recipe) => (
           <div key={recipe.idMeal} className="recipe-card">
             <h2 className="card-title">{recipe.strMeal}</h2>
-            <p className="info">{recipe.strCategory}</p>
-            <p className="info">{recipe.strArea}</p>
+            <p className="info">Category - {recipe.strCategory}</p>
+            <p className="info">Region - {recipe.strArea}</p>
+            {/* <Link>View</Link> */}
           </div>
         ))}
       </div>

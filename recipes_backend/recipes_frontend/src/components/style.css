@@ -21,7 +21,7 @@ form {
     text-align: left;
 }
 
-.fields, .recipes {
+.fields, .recipes, .search-results {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -36,6 +36,10 @@ form {
 .categories-box {
     border: 1px solid black;
     display: flex;
+}
+
+.category {
+    cursor: pointer;
 }
 
 .column {
