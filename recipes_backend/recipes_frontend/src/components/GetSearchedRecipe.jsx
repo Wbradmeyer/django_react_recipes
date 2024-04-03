@@ -7,6 +7,7 @@ const GetSearchedRecipe = () => {
   const { id } = useParams();
   const [thisRecipe, setThisRecipe] = useState({});
   const [ingredients, setIngredients] = useState([]);
+  const [instructions, setInstructions] = useState([]);
 
   useEffect(() => {
     axios
@@ -15,6 +16,8 @@ const GetSearchedRecipe = () => {
         console.log(res);
         const recipe = res.data.meals[0];
         setThisRecipe(recipe);
+        const instructions = recipe.strInstructions.split(". ");
+        setInstructions(instructions);
         let i = 1;
         const newIngredients = [];
         while (recipe[`strIngredient${i}`]) {
@@ -34,7 +37,7 @@ const GetSearchedRecipe = () => {
         <h1>Searched Recipe</h1>
       </div>
       <hr />
-      <div id="one-recipe">
+      <div className="one-recipe">
         <div className="recipe-card">
           <h2 className="card-title">Name: {thisRecipe.strMeal}</h2>
           <p className="info">Area: {thisRecipe.strArea}</p>
@@ -45,10 +48,16 @@ const GetSearchedRecipe = () => {
             </p>
           ))}
         </div>
-        <p className="info">Instructions:</p>
-        <p>{thisRecipe.strInstructions}</p>
-        <button>Save to My Recipes</button>
       </div>
+      <div className="instructions-box">
+        <p>Instructions:</p>
+        {instructions.map((step, index) => (
+          <p key={index}>
+            {index + 1}. {step}
+          </p>
+        ))}
+      </div>
+      <button>Save to My Recipes</button>
     </div>
   );
 };

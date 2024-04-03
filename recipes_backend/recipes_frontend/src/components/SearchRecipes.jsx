@@ -172,8 +172,12 @@ const SearchRecipes = () => {
         {searchedRecipes.map((recipe) => (
           <div key={recipe.idMeal} className="recipe-card">
             <h2 className="card-title">{recipe.strMeal}</h2>
-            <p className="info">Category - {recipe.strCategory}</p>
-            <p className="info">Region - {recipe.strArea}</p>
+            {recipe.strCategory ? (
+              <p className="info">Category - {recipe.strCategory}</p>
+            ) : null}
+            {recipe.strArea ? (
+              <p className="info">Region - {recipe.strArea}</p>
+            ) : null}
             <Link to={`/recipes/search/${recipe.idMeal}`}>View</Link>
           </div>
         ))}

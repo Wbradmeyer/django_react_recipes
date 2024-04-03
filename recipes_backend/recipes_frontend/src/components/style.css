@@ -33,12 +33,18 @@ form {
     justify-content: space-around;
 }
 
-.categories-box {
+.categories-box, .instructions-box {
     border-radius: 10px;
     box-shadow: 0px 0px 10px black;
     background-color: rgb(255, 255, 255, 0.5);
     display: flex;
     padding: 10px;
+}
+
+.instructions-box {
+    margin: 0;
+    display: block;
+    text-align: left;
 }
 
 .category {
@@ -49,7 +55,7 @@ form {
     margin: 0px 10px;
 }
 
-#one-recipe {
+.one-recipe {
     margin: 0px 0px 0px 200px;
 }
 
