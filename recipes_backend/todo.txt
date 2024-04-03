@@ -1,5 +1,9 @@
 Todo List:
 
-- Each search recipe includes a link to view the card, recipe ID
-
 - Add cooking instructions and ingredients to Model, amounts?
+    - side by side fields for measure and ingredients
+    - can add another, increment the # at the end of the key
+
+- Data missing from category filter
+
+- instructions changed to an array for recipe display

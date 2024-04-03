@@ -8,7 +8,7 @@ const SearchRecipes = () => {
   const [search, setSearch] = useState({
     nameSearch: "",
     letterSearch: "",
-    categorySearch: "",
+    // categorySearch: "",
   });
   const [categories, setCategories] = useState([]);
   const [secondColumnStart, setSecondColumnStart] = useState(0);
@@ -64,7 +64,7 @@ const SearchRecipes = () => {
           setSearch({
             nameSearch: "",
             letterSearch: "",
-            categorySearch: "",
+            // categorySearch: "",
           });
           setError(null);
         })
@@ -174,7 +174,7 @@ const SearchRecipes = () => {
             <h2 className="card-title">{recipe.strMeal}</h2>
             <p className="info">Category - {recipe.strCategory}</p>
             <p className="info">Region - {recipe.strArea}</p>
-            {/* <Link>View</Link> */}
+            <Link to={`/recipes/search/${recipe.idMeal}`}>View</Link>
           </div>
         ))}
       </div>
