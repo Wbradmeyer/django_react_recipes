@@ -39,9 +39,13 @@ const GetSearchedRecipe = () => {
       <hr />
       <div className="one-recipe">
         <div className="recipe-card">
-          <h2 className="card-title">Name: {thisRecipe.strMeal}</h2>
-          <p className="info">Area: {thisRecipe.strArea}</p>
-          <p className="info">Category: {thisRecipe.strCategory}</p>
+          <h2 className="card-title">{thisRecipe.strMeal}</h2>
+          <div style={{ display: "flex" }} className="info">
+            <p style={{ flex: 1, margin: 0 }}>Area: {thisRecipe.strArea}</p>
+            <p style={{ flex: 1, margin: 0 }}>
+              Category: {thisRecipe.strCategory}
+            </p>
+          </div>
           {ingredients.map(({ measure, ingredient }, index) => (
             <p key={index} className="info">
               {measure} {ingredient}
