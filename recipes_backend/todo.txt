@@ -1,5 +1,9 @@
 Todo List:
 
-- Add cooking instructions and ingredients to Model, amounts?
-    - side by side fields for measure and ingredients
+- Add to Model
+    - Add cooking instructions and ingredients/measures
+    - add area and category
+    - cook time? remove?
+    - side by side fields for measure and ingredients on form
     - can add another, increment the # at the end of the key
+    - 
