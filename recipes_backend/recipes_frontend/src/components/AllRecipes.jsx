@@ -42,7 +42,10 @@ const AllRecipes = () => {
           <div key={thisRecipe.id} className="recipe-card">
             <h2 className="card-title">{thisRecipe.name}</h2>
             <p className="info">Cook Time: {thisRecipe.cook_minutes} minutes</p>
-            <p className="info">Instructions</p>
+            <div style={{ display: "flex" }} className="info">
+              <p style={{ flex: 1, margin: 0 }}>Area: </p>
+              <p style={{ flex: 1, margin: 0 }}>Category: </p>
+            </div>
             <Link to={`/recipes/${thisRecipe.id}`}>View</Link>
           </div>
         ))}
