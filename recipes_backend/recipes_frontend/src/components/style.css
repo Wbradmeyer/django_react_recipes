@@ -17,11 +17,16 @@
 }
 
 form {
-    max-width: 350px;
     text-align: left;
+    display: flex;
+    justify-content: space-between;
 }
 
-.fields, .recipes, .search-results {
+.fields, .input, .instructions_input {
+    display: block;
+}
+
+.recipes, .search-results {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -59,11 +64,16 @@ form {
     margin: 0px 0px 0px 200px;
 }
 
-.input, .search-input {
+.input, .search-input, .instructions_input {
     width: 250px;
     height: 30px;
     border-radius: 8px;
     border: 1px solid black;
+}
+
+.instructions_input {
+    width: 510px;
+    height: 125px;
 }
 
 .search-input {
