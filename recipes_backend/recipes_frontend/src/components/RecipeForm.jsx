@@ -88,6 +88,7 @@ const RecipeForm = () => {
                 <input type="text" name="ingredient1" className="input" />
               </p>
             </div>
+            <div id="add_more"></div>
             <div
               style={{
                 width: "125px",
