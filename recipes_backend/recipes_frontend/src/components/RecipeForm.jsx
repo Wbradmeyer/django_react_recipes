@@ -88,6 +88,19 @@ const RecipeForm = () => {
                 <input type="text" name="ingredient1" className="input" />
               </p>
             </div>
+            <div
+              style={{
+                width: "125px",
+                height: "30px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-around",
+                margin: "0px",
+              }}
+            >
+              <p style={{ margin: "0px" }}>Add More</p>
+              <button className="plus">+</button>
+            </div>
             <p>
               <label>
                 Instructions{" "}
