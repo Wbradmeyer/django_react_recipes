@@ -9,9 +9,9 @@ class RecipeSerializer(serializers.ModelSerializer):
     def validate(self, data):
 
         if len(data['name']) < 3 or len(data['name']) > 200:
-            raise serializers.ValidationError({'name_error': 'Name must be between 3 and 200 characters.'})
+            raise serializers.ValidationError({'name': 'Name must be between 3 and 200 characters.'})
         
         if data['cook_minutes'] < 1 or data['cook_minutes'] > 180:
-            raise serializers.ValidationError({'time_error': 'Cook time must be between 1 and 180 minutes.'})
+            raise serializers.ValidationError({'cook_minutes': 'Cook time must be between 1 and 180 minutes.'})
         
         return data

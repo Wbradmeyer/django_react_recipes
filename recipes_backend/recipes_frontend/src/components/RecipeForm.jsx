@@ -13,6 +13,33 @@ const RecipeForm = () => {
   let measureCount = 1;
   let ingredientCount = 1;
 
+  const addMore = (e) => {
+    e.preventDefault();
+    measureCount++;
+    ingredientCount++;
+    add_inputs.innerHTML += (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <p>
+          <label>Measurement ${measureCount}</label>
+          <input type="text" name="measure${measureCount}" className="input" />
+        </p>
+        <p>
+          <label>Ingredient ${ingredientCount}</label>
+          <input
+            type="text"
+            name="ingredient${ingredientCount}"
+            className="input"
+          />
+        </p>
+      </div>
+    );
+  };
+
   const handleVals = (e) => {
     setRecipe({ ...recipe, [e.target.name]: e.target.value });
   };
@@ -38,9 +65,6 @@ const RecipeForm = () => {
       <div>
         <form onSubmit={onSubmitHandler}>
           <div style={{ flex: 1 }}>
-            {error.name_error ? (
-              <p className="error">{error.name_error}</p>
-            ) : null}
             {error.name ? <p className="error">{error.name}</p> : null}
             <p className="fields">
               <label>Name</label>
@@ -51,9 +75,6 @@ const RecipeForm = () => {
                 className="input"
               />
             </p>
-            {error.time_error ? (
-              <p className="error">{error.time_error}</p>
-            ) : null}
             {error.cook_minutes ? (
               <p className="error">{error.cook_minutes}</p>
             ) : null}
@@ -70,37 +91,42 @@ const RecipeForm = () => {
               <label>Category</label>
               <input type="text" name="category" className="input" />
             </p>
-            <button className="add-btn">Add</button>
+            <button type="submit" className="add-btn">
+              Add
+            </button>
           </div>
           <div style={{ flex: 2, marginLeft: 10 }}>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <p>
-                <label>Measurement {measureCount}</label>
-                <input type="text" name="measure1" className="input" />
-              </p>
-              <p>
-                <label>Ingredient {ingredientCount}</label>
-                <input type="text" name="ingredient1" className="input" />
-              </p>
-            </div>
-            <div id="add_more"></div>
-            <div
-              style={{
-                width: "125px",
-                height: "30px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-around",
-                margin: "0px",
-              }}
-            >
-              <p style={{ margin: "0px" }}>Add More</p>
-              <button className="plus">+</button>
+            <div id="add_inputs">
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                <p>
+                  <label>Measurement {measureCount}</label>
+                  <input type="text" name="measure1" className="input" />
+                </p>
+                <p>
+                  <label>Ingredient {ingredientCount}</label>
+                  <input type="text" name="ingredient1" className="input" />
+                </p>
+              </div>
+              <div
+                style={{
+                  width: "125px",
+                  height: "30px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-around",
+                  margin: "0px",
+                }}
+              >
+                <p style={{ margin: "0px" }}>Add More</p>
+                <button onClick={addMore} className="plus">
+                  +
+                </button>
+              </div>
             </div>
             <p>
               <label>
