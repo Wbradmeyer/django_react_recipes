@@ -7,13 +7,20 @@ const GetRecipe = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [thisRecipe, setThisRecipe] = useState({});
+  const [ingredients, setIngredients] = useState([]);
+  const [instructions, setInstructions] = useState([]);
 
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/recipes/${id}`)
       .then((res) => {
         console.log(res);
-        setThisRecipe(res.data);
+        const recipe = res.data;
+        setThisRecipe(recipe);
+        const ingredientsList = recipe.ingredients.split(", ");
+        setIngredients(ingredientsList);
+        const instructionsList = recipe.instructions.split(". ");
+        setInstructions(instructionsList);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -39,7 +46,20 @@ const GetRecipe = () => {
         <div className="recipe-card">
           <h2 className="card-title">Name: {thisRecipe.name}</h2>
           <p className="info">Cook Time: {thisRecipe.cook_minutes}</p>
-          <p className="info">Instructions</p>
+          <div style={{ display: "flex" }} className="info">
+            <p style={{ flex: 1, margin: 0 }}>Area: {thisRecipe.area}</p>
+            <p style={{ flex: 1, margin: 0 }}>
+              Category: {thisRecipe.category}
+            </p>
+          </div>
+          <div>
+            <p className="info">----</p>
+            {ingredients.map((ingredient, index) => (
+              <p key={index} className="info">
+                {ingredient}
+              </p>
+            ))}
+          </div>
           <button className="update-btn">
             <Link to={`/recipes/update/${thisRecipe.id}`}>Update</Link>
           </button>
@@ -49,6 +69,14 @@ const GetRecipe = () => {
           >
             Delete
           </button>
+        </div>
+        <div className="instructions-box">
+          <p>Instructions:</p>
+          {instructions.map((step, index) => (
+            <p key={index}>
+              {index + 1}. {step}
+            </p>
+          ))}
         </div>
       </div>
     </div>

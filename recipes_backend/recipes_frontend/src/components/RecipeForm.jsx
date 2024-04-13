@@ -64,11 +64,21 @@ const RecipeForm = () => {
             </p>
             <p className="fields">
               <label>Area</label>
-              <input type="text" name="area" className="input" />
+              <input
+                type="text"
+                name="area"
+                onChange={handleVals}
+                className="input"
+              />
             </p>
             <p className="fields">
               <label>Category</label>
-              <input type="text" name="category" className="input" />
+              <input
+                type="text"
+                name="category"
+                onChange={handleVals}
+                className="input"
+              />
             </p>
             <button type="submit" className="add-btn">
               Add
@@ -79,6 +89,7 @@ const RecipeForm = () => {
               <label>Ingredients</label>
               <textarea
                 name="ingredients"
+                onChange={handleVals}
                 className="text_input"
                 placeholder="Add measurement then ingredient and separate with a comma."
               ></textarea>
@@ -87,6 +98,7 @@ const RecipeForm = () => {
               <label>Instructions</label>
               <textarea
                 name="instructions"
+                onChange={handleVals}
                 className="text_input"
                 placeholder="End each instruction with a period and do not number."
               ></textarea>
