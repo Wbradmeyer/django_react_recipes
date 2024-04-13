@@ -10,35 +10,6 @@ const RecipeForm = () => {
     cook_minutes: "",
   });
   const [error, setError] = useState({});
-  let measureCount = 1;
-  let ingredientCount = 1;
-
-  const addMore = (e) => {
-    e.preventDefault();
-    measureCount++;
-    ingredientCount++;
-    add_inputs.innerHTML += (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <p>
-          <label>Measurement ${measureCount}</label>
-          <input type="text" name="measure${measureCount}" className="input" />
-        </p>
-        <p>
-          <label>Ingredient ${ingredientCount}</label>
-          <input
-            type="text"
-            name="ingredient${ingredientCount}"
-            className="input"
-          />
-        </p>
-      </div>
-    );
-  };
 
   const handleVals = (e) => {
     setRecipe({ ...recipe, [e.target.name]: e.target.value });
@@ -88,6 +59,10 @@ const RecipeForm = () => {
               />
             </p>
             <p className="fields">
+              <label>Area</label>
+              <input type="text" name="area" className="input" />
+            </p>
+            <p className="fields">
               <label>Category</label>
               <input type="text" name="category" className="input" />
             </p>
@@ -96,48 +71,20 @@ const RecipeForm = () => {
             </button>
           </div>
           <div style={{ flex: 2, marginLeft: 10 }}>
-            <div id="add_inputs">
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
-              >
-                <p>
-                  <label>Measurement {measureCount}</label>
-                  <input type="text" name="measure1" className="input" />
-                </p>
-                <p>
-                  <label>Ingredient {ingredientCount}</label>
-                  <input type="text" name="ingredient1" className="input" />
-                </p>
-              </div>
-              <div
-                style={{
-                  width: "125px",
-                  height: "30px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-around",
-                  margin: "0px",
-                }}
-              >
-                <p style={{ margin: "0px" }}>Add More</p>
-                <button onClick={addMore} className="plus">
-                  +
-                </button>
-              </div>
-            </div>
             <p>
-              <label>
-                Instructions{" "}
-                <span style={{ fontStyle: "italic" }}>
-                  (End each instruction with a period and do not number.)
-                </span>
-              </label>
+              <label>Ingredients</label>
+              <textarea
+                name="ingredients"
+                className="text_input"
+                placeholder="Add measurement then ingredient and separate with a comma."
+              ></textarea>
+            </p>
+            <p>
+              <label>Instructions</label>
               <textarea
                 name="instructions"
-                className="instructions_input"
+                className="text_input"
+                placeholder="End each instruction with a period and do not number."
               ></textarea>
             </p>
           </div>
