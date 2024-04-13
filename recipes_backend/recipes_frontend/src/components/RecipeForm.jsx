@@ -8,6 +8,10 @@ const RecipeForm = () => {
   const [recipe, setRecipe] = useState({
     name: "",
     cook_minutes: "",
+    area: "",
+    category: "",
+    ingredients: "",
+    instructions: "",
   });
   const [error, setError] = useState({});
 
