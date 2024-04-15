@@ -46,6 +46,7 @@ const GetSearchedRecipe = () => {
               Category: {thisRecipe.strCategory}
             </p>
           </div>
+          <p className="info">----</p>
           {ingredients.map(({ measure, ingredient }, index) => (
             <p key={index} className="info">
               {measure} {ingredient}

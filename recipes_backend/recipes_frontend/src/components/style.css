@@ -16,7 +16,7 @@
     background-color: rgb(255, 255, 255, 0.5);
 }
 
-form {
+.add-recipe {
     text-align: left;
     display: flex;
     justify-content: space-between;
