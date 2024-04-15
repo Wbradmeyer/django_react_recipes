@@ -45,7 +45,7 @@ const GetRecipe = () => {
       <div id="one-recipe">
         <div className="recipe-card">
           <h2 className="card-title">Name: {thisRecipe.name}</h2>
-          <p className="info">Cook Time: {thisRecipe.cook_minutes}</p>
+          <p className="info">Cook Time: {thisRecipe.cook_minutes} minutes</p>
           <div style={{ display: "flex" }} className="info">
             <p style={{ flex: 1, margin: 0 }}>Area: {thisRecipe.area}</p>
             <p style={{ flex: 1, margin: 0 }}>
