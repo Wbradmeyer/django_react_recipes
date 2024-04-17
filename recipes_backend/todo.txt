@@ -1,13 +1,3 @@
 Todo List:
 
-- Add to Model
-    - Add cooking instructions and ingredients/measures
-    - add area and category
-    - cook time? remove?
-    - side by side fields for measure and ingredients on form
-    - can add another, increment the # at the end of the key
-    - ingredients/measures data
-        - could make this a TextField and one string divided by a character, when displayed
-            I could split into a list by that character
-        - otherwise store as a list or dictionaries, JSONField?
-        - maybe copy the API data, 20 measures and 20 ingredients, some are empty or null
+- add a searched recipe to database
