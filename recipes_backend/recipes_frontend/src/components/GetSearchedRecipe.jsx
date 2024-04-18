@@ -16,7 +16,9 @@ const GetSearchedRecipe = () => {
         console.log(res);
         const recipe = res.data.meals[0];
         setThisRecipe(recipe);
-        const instructions = recipe.strInstructions.split(". ");
+        const instructions = recipe.strInstructions
+          .replace(/\n/g, "")
+          .split(". ");
         setInstructions(instructions);
         let i = 1;
         const newIngredients = [];
