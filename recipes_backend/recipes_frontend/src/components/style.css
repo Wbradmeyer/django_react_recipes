@@ -24,6 +24,7 @@
 
 .fields, .input, .instructions_input {
     display: block;
+    text-align: left;
 }
 
 .recipes, .search-results {
@@ -58,6 +59,7 @@
 
 .column {
     margin: 0px 10px;
+    text-align: left;
 }
 
 .one-recipe {
