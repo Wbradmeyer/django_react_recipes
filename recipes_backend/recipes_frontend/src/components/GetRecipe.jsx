@@ -74,7 +74,9 @@ const GetRecipe = () => {
           <p>Instructions:</p>
           {instructions.map((step, index) => (
             <p key={index}>
-              {index + 1}. {step}
+              {index === instructions.length - 1
+                ? `${index + 1}. ${step}`
+                : `${index + 1}. ${step}.`}
             </p>
           ))}
         </div>
