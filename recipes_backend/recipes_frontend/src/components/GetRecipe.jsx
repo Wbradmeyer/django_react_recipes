@@ -19,7 +19,9 @@ const GetRecipe = () => {
         setThisRecipe(recipe);
         const ingredientsList = recipe.ingredients.split(", ");
         setIngredients(ingredientsList);
-        const instructionsList = recipe.instructions.split(". ");
+        const instructionsList = recipe.instructions
+          .replace(/\n/g, "")
+          .split(". ");
         setInstructions(instructionsList);
       })
       .catch((err) => console.log(err));
@@ -42,9 +44,9 @@ const GetRecipe = () => {
         <h1>Get Recipe</h1>
       </div>
       <hr />
-      <div id="one-recipe">
+      <div className="one-recipe">
         <div className="recipe-card">
-          <h2 className="card-title">Name: {thisRecipe.name}</h2>
+          <h2 className="card-title">{thisRecipe.name}</h2>
           <p className="info">Cook Time: {thisRecipe.cook_minutes} minutes</p>
           <div style={{ display: "flex" }} className="info">
             <p style={{ flex: 1, margin: 0 }}>Area: {thisRecipe.area}</p>
@@ -70,16 +72,16 @@ const GetRecipe = () => {
             Delete
           </button>
         </div>
-        <div className="instructions-box">
-          <p>Instructions:</p>
-          {instructions.map((step, index) => (
-            <p key={index}>
-              {index === instructions.length - 1
-                ? `${index + 1}. ${step}`
-                : `${index + 1}. ${step}.`}
-            </p>
-          ))}
-        </div>
+      </div>
+      <div className="instructions-box">
+        <p>Instructions:</p>
+        {instructions.map((step, index) => (
+          <p key={index}>
+            {index === instructions.length - 1
+              ? `${index + 1}. ${step}`
+              : `${index + 1}. ${step}.`}
+          </p>
+        ))}
       </div>
     </div>
   );
