@@ -19,6 +19,7 @@ const GetSearchedRecipe = () => {
         const instructions = recipe.strInstructions
           .replace(/\n/g, "")
           .split(". ");
+        console.log(instructions);
         setInstructions(instructions);
         let i = 1;
         const newIngredients = [];
