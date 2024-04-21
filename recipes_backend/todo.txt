@@ -1,3 +1,5 @@
 Todo List:
 
-- add a searched recipe to database
+- lay cards atop one another
+- use Django Rest for login auth
+- add validations for other model fields
