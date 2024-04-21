@@ -9,14 +9,6 @@ const GetSearchedRecipe = () => {
   const [thisRecipe, setThisRecipe] = useState({});
   const [ingredients, setIngredients] = useState([]);
   const [instructions, setInstructions] = useState([]);
-  const [recipeToSave, setRecipeToSave] = useState({
-    name: "",
-    cook_minutes: 30,
-    area: "",
-    category: "",
-    ingredients: "",
-    instructions: "",
-  });
 
   useEffect(() => {
     axios
@@ -25,12 +17,6 @@ const GetSearchedRecipe = () => {
         console.log(res);
         const recipe = res.data.meals[0];
         setThisRecipe(recipe);
-        setRecipeToSave({
-          name: recipe.strMeal,
-          area: recipe.strArea,
-          category: recipe.strCategory,
-          instructions: recipe.strInstructions,
-        });
         // break instructions up to array by periods; for page display
         const instructions = recipe.strInstructions
           .replace(/\n/g, "")
@@ -48,18 +34,23 @@ const GetSearchedRecipe = () => {
         }
         setIngredients(newIngredients);
         // save to string separating measure/ingredient pair with a comma
-        setRecipeToSave({
-          ingredients: newIngredients.join(","),
-        });
-        console.log(recipeToSave);
       })
       .catch((err) => console.log(err));
   }, [id]);
 
-  const onSubmitHandler = (e, recipe) => {
+  const onSubmitHandler = (e) => {
+    let recipeToSave = {
+      name: thisRecipe.strMeal,
+      area: thisRecipe.strArea,
+      cook_minutes: 30,
+      category: thisRecipe.strCategory,
+      ingredients: ingredients.join(","),
+      instructions: thisRecipe.strInstructions,
+    };
+    console.log(recipeToSave);
     e.preventDefault();
     axios
-      .post("http://localhost:8000/api/recipes/add", recipe)
+      .post("http://localhost:8000/api/recipes/add", recipeToSave)
       .then((res) => {
         console.log(res);
         navigate("/recipes");
@@ -87,10 +78,6 @@ const GetSearchedRecipe = () => {
             </p>
           </div>
           <p className="info">----</p>
-          {/* {ingredients.map(({ measure, ingredient }, index) => (
-            <p key={index} className="info">
-              {measure} {ingredient}
-            </p> */}
           {ingredients.map((ingredient, index) => (
             <p key={index} className="info">
               {ingredient}
@@ -108,9 +95,7 @@ const GetSearchedRecipe = () => {
           </p>
         ))}
       </div>
-      <button onClick={(e) => onSubmitHandler(e, recipeToSave)}>
-        Save to My Recipes
-      </button>
+      <button onClick={onSubmitHandler}>Save to My Recipes</button>
     </div>
   );
 };

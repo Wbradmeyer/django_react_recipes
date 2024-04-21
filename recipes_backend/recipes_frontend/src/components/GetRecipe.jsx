@@ -17,7 +17,7 @@ const GetRecipe = () => {
         console.log(res);
         const recipe = res.data;
         setThisRecipe(recipe);
-        const ingredientsList = recipe.ingredients.split(", ");
+        const ingredientsList = recipe.ingredients.split(",");
         setIngredients(ingredientsList);
         const instructionsList = recipe.instructions
           .replace(/\n/g, "")
