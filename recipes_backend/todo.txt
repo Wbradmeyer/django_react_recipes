@@ -2,4 +2,4 @@ Todo List:
 
 - lay cards atop one another
 - use Django Rest for login auth
-- add validations for other model fields
+- fill out update form to match add form
