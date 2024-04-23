@@ -12,12 +12,6 @@ class RecipeListView(generics.ListAPIView):
     serializer_class = RecipeSerializer
     pagination_class = PageNumberPagination
 
-# @api_view(['GET'])
-# def get_all_recipes(request):
-#     recipes = Recipe.objects.all()
-#     serializer = RecipeSerializer(recipes, many=True)
-#     return Response(serializer.data)
-
 @api_view(['GET'])
 def get_recipe_by_id(request, id):
     recipe = Recipe.objects.get(id=id)
@@ -31,10 +25,6 @@ def add_recipe(request):
         serializer.save()
         return Response(status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    # if not serializer.is_valid():
-    #     return Response(serializer.errors)
-    # serializer.save()
-    # return Response(serializer.data)
 
 @api_view(['POST'])
 def update_recipe(request, id):
@@ -44,10 +34,6 @@ def update_recipe(request, id):
         serializer.save()
         return Response(status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    # if not serializer.is_valid():
-    #     return Response(serializer.errors)
-    # serializer.save()
-    # return Response(serializer.data)
 
 @api_view(['DELETE'])
 def delete_recipe(request, id):
