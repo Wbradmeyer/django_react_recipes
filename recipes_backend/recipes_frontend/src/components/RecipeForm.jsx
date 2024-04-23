@@ -63,6 +63,7 @@ const RecipeForm = () => {
                   className="input"
                 />
               </p>
+              {error.area ? <p className="error">{error.area}</p> : null}
               <p className="fields">
                 <label>Area</label>
                 <input
@@ -72,6 +73,9 @@ const RecipeForm = () => {
                   className="input"
                 />
               </p>
+              {error.category ? (
+                <p className="error">{error.category}</p>
+              ) : null}
               <p className="fields">
                 <label>Category</label>
                 <input
@@ -86,6 +90,9 @@ const RecipeForm = () => {
               </button>
             </div>
             <div style={{ flex: 2, marginLeft: 10 }}>
+              {error.ingredients ? (
+                <p className="error">{error.ingredients}</p>
+              ) : null}
               <p>
                 <label>Ingredients</label>
                 <textarea
@@ -95,6 +102,9 @@ const RecipeForm = () => {
                   placeholder="Add measurement then ingredient and separate with a comma."
                 ></textarea>
               </p>
+              {error.instructions ? (
+                <p className="error">{error.instructions}</p>
+              ) : null}
               <p>
                 <label>Instructions</label>
                 <textarea
