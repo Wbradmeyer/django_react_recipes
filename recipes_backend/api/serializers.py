@@ -14,10 +14,10 @@ class RecipeSerializer(serializers.ModelSerializer):
         if data['cook_minutes'] < 1 or data['cook_minutes'] > 180:
             raise serializers.ValidationError({'cook_minutes': 'Cook time must be between 1 and 180 minutes.'})
         
-        if len(data['area']) < 3 or len(data['area'] > 200):
+        if len(data['area']) < 3 or len(data['area']) > 200:
             raise serializers.ValidationError({'area': 'Area must be between 3 and 200 characters.'})
         
-        if len(data['category']) < 3 or len(data['category'] > 200):
+        if len(data['category']) < 3 or len(data['category']) > 200:
             raise serializers.ValidationError({'category': 'Category must be between 3 and 200 characters.'})
         
         if len(data['ingredients']) < 3:
