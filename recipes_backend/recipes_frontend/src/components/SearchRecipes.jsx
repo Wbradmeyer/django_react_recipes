@@ -8,7 +8,6 @@ const SearchRecipes = () => {
   const [search, setSearch] = useState({
     nameSearch: "",
     letterSearch: "",
-    // categorySearch: "",
   });
   const [categories, setCategories] = useState([]);
   const [secondColumnStart, setSecondColumnStart] = useState(0);
@@ -35,21 +34,10 @@ const SearchRecipes = () => {
   }, []);
 
   const handleVals = (e) => {
-    // console.log(e.target.name);
     setSearch((prevSearch) => ({
       ...prevSearch,
       [e.target.name]: e.target.value,
     }));
-    // if (search.nameSearch) {
-    //   console.log("name is not empty");
-    //   setIndex(0);
-    // } else if (search.letterSearch) {
-    //   console.log("letter is not empty");
-    //   setIndex(1);
-    // } else {
-    //   setIndex(0);
-    // }
-    // console.log(index);
   };
 
   //
@@ -64,7 +52,6 @@ const SearchRecipes = () => {
           setSearch({
             nameSearch: "",
             letterSearch: "",
-            // categorySearch: "",
           });
           setError(null);
         })
