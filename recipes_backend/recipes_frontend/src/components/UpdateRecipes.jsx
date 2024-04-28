@@ -112,12 +112,10 @@ const UpdateRecipe = () => {
                 <label>Ingredients</label>
                 <textarea
                   name="ingredients"
+                  value={recipe.ingredients}
                   onChange={handleVals}
                   className="text_input"
-                  placeholder="Add measurement then ingredient and separate with a comma."
-                >
-                  {recipe.ingredients}
-                </textarea>
+                ></textarea>
               </p>
               {error.instructions ? (
                 <p className="error">{error.instructions}</p>
@@ -126,12 +124,10 @@ const UpdateRecipe = () => {
                 <label>Instructions</label>
                 <textarea
                   name="instructions"
+                  value={recipe.instructions}
                   onChange={handleVals}
                   className="text_input"
-                  placeholder="End each instruction with a period and do not number."
-                >
-                  {recipe.instructions}
-                </textarea>
+                ></textarea>
               </p>
             </div>
           </div>
