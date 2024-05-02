@@ -33,6 +33,7 @@ const Index = () => {
               className="input"
             />
           </p>
+          <button className="add-btn">Register</button>
         </div>
         <div>
           <h2>Login</h2>
@@ -49,6 +50,7 @@ const Index = () => {
               className="input"
             />
           </p>
+          <button className="update-btn">Login</button>
         </div>
       </div>
     </div>
