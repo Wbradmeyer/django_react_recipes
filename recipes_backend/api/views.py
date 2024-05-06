@@ -4,8 +4,10 @@ from rest_framework import generics
 from rest_framework import pagination
 from rest_framework import status
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.authtoken.models import Token
 from recipes.models import Recipe
-from .serializers import RecipeSerializer
+from .serializers import RecipeSerializer, UserSerializer
+from django.contrib.auth.models import User
 
 class RecipeListView(generics.ListAPIView):
     queryset = Recipe.objects.all()
@@ -51,7 +53,15 @@ def login(request):
 
 @api_view(['POST'])
 def register(request):
-    return Response({})
+    serializer = UserSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        user = User.objects.get(username=request.data['username'])
+        user.set_password(request.data['password'])
+        user.save()
+        token = Token.objects.create(user=user)
+        return Response({'token': token.key, 'user': serializer.data})
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 def test_token(request):
