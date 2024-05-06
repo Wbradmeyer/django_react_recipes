@@ -1,7 +1,51 @@
-import React from "react";
+import { React, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./style.css";
 
 const Index = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState({});
+
+  const handleVals = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const registrationHandler = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:8000/api/register", user)
+      .then((res) => {
+        console.log(res);
+        navigate("/recipes");
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(err.response.data);
+        setError(err.response.data);
+      });
+  };
+
+  const loginHandler = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:8000/api/login", user)
+      .then((res) => {
+        console.log(res);
+        navigate("/recipes");
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log(err.response.data);
+        setError(err.response.data);
+      });
+  };
+
   return (
     <div className="container">
       <div className="register">
