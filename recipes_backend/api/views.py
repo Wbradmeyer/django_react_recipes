@@ -12,6 +12,8 @@ class RecipeListView(generics.ListAPIView):
     serializer_class = RecipeSerializer
     pagination_class = PageNumberPagination
 
+# These are the basic CRUD Methods
+
 @api_view(['GET'])
 def get_recipe_by_id(request, id):
     recipe = Recipe.objects.get(id=id)
@@ -40,3 +42,17 @@ def delete_recipe(request, id):
     recipe = Recipe.objects.get(id=id)
     recipe.delete()
     return Response("Successfully deleted.")
+
+# These methods are for login and registration
+
+@api_view(['POST'])
+def login(request):
+    return Response({})
+
+@api_view(['POST'])
+def register(request):
+    return Response({})
+
+@api_view(['GET'])
+def test_token(request):
+    return Response({})
