@@ -9,6 +9,7 @@ const Index = () => {
     username: "",
     email: "",
     password: "",
+    confirm: "",
   });
   const [error, setError] = useState({});
 
@@ -85,12 +86,14 @@ const Index = () => {
                 className="input"
               />
             </p>
+            {error.confirm ? <p className="error">{error.confirm}</p> : null}
             <p className="fields">
               <label htmlFor="confirm">Confirm Password</label>
               <input
                 type="password"
                 name="confirm"
                 id="confirm"
+                onChange={handleVals}
                 className="input"
               />
             </p>
