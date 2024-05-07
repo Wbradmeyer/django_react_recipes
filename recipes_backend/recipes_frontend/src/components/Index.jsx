@@ -53,6 +53,7 @@ const Index = () => {
         <div>
           <h2>Register</h2>
           <form onSubmit={registrationHandler}>
+            {error.username ? <p className="error">{error.username}</p> : null}
             <p className="fields">
               <label htmlFor="username1">Username</label>
               <input
@@ -73,6 +74,7 @@ const Index = () => {
                 className="input"
               />
             </p>
+            {error.password ? <p className="error">{error.password}</p> : null}
             <p className="fields">
               <label htmlFor="password1">Password</label>
               <input
@@ -98,6 +100,7 @@ const Index = () => {
         <div>
           <h2>Login</h2>
           <form onSubmit={loginHandler}>
+            {error.detail ? <p className="error">{error.detail}</p> : null}
             <p className="fields">
               <label htmlFor="username2">Username</label>
               <input
