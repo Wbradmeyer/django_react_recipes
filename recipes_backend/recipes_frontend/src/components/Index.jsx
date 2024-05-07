@@ -14,6 +14,7 @@ const Index = () => {
 
   const handleVals = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
+    console.log(user);
   };
 
   const registrationHandler = (e) => {
@@ -51,50 +52,74 @@ const Index = () => {
       <div className="register">
         <div>
           <h2>Register</h2>
-          <p className="fields">
-            <label htmlFor="name">Name</label>
-            <input type="text" name="name" id="name" className="input" />
-          </p>
-          <p className="fields">
-            <label htmlFor="email">Email</label>
-            <input type="email" name="email" id="email" className="input" />
-          </p>
-          <p className="fields">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              className="input"
-            />
-          </p>
-          <p className="fields">
-            <label htmlFor="password"> Confirm Password</label>
-            <input
-              type="password"
-              name="confirm"
-              id="confirm"
-              className="input"
-            />
-          </p>
-          <button className="add-btn">Register</button>
+          <form onSubmit={registrationHandler}>
+            <p className="fields">
+              <label htmlFor="username1">Username</label>
+              <input
+                type="text"
+                name="username"
+                id="username1"
+                onChange={handleVals}
+                className="input"
+              />
+            </p>
+            <p className="fields">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                onChange={handleVals}
+                className="input"
+              />
+            </p>
+            <p className="fields">
+              <label htmlFor="password1">Password</label>
+              <input
+                type="password"
+                name="password"
+                id="password1"
+                onChange={handleVals}
+                className="input"
+              />
+            </p>
+            <p className="fields">
+              <label htmlFor="confirm">Confirm Password</label>
+              <input
+                type="password"
+                name="confirm"
+                id="confirm"
+                className="input"
+              />
+            </p>
+            <button className="add-btn">Register</button>
+          </form>
         </div>
         <div>
           <h2>Login</h2>
-          <p className="fields">
-            <label htmlFor="email">Email</label>
-            <input type="email" name="email" id="email" className="input" />
-          </p>
-          <p className="fields">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              className="input"
-            />
-          </p>
-          <button className="update-btn">Login</button>
+          <form onSubmit={loginHandler}>
+            <p className="fields">
+              <label htmlFor="username2">Username</label>
+              <input
+                type="text"
+                name="username"
+                id="username2"
+                onChange={handleVals}
+                className="input"
+              />
+            </p>
+            <p className="fields">
+              <label htmlFor="password2">Password</label>
+              <input
+                type="password"
+                name="password"
+                id="password2"
+                onChange={handleVals}
+                className="input"
+              />
+            </p>
+            <button className="update-btn">Login</button>
+          </form>
         </div>
       </div>
     </div>
