@@ -3,19 +3,19 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./style.css";
 
-const Index = () => {
+const Index = (props) => {
+  const { setCurrentUser } = props;
   const navigate = useNavigate();
   const [user, setUser] = useState({
     username: "",
     email: "",
     password: "",
-    confirm: "",
+    // confirm: "",
   });
   const [error, setError] = useState({});
 
   const handleVals = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
   };
 
   const registrationHandler = (e) => {
@@ -23,7 +23,8 @@ const Index = () => {
     axios
       .post("http://localhost:8000/api/register", user)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
+        setCurrentUser(res.data);
         navigate("/recipes");
       })
       .catch((err) => {
@@ -38,7 +39,8 @@ const Index = () => {
     axios
       .post("http://localhost:8000/api/login", user)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
+        setCurrentUser(res.data);
         navigate("/recipes");
       })
       .catch((err) => {
@@ -86,7 +88,7 @@ const Index = () => {
                 className="input"
               />
             </p>
-            {error.confirm ? <p className="error">{error.confirm}</p> : null}
+            {/* {error.confirm ? <p className="error">{error.confirm}</p> : null}
             <p className="fields">
               <label htmlFor="confirm">Confirm Password</label>
               <input
@@ -96,7 +98,7 @@ const Index = () => {
                 onChange={handleVals}
                 className="input"
               />
-            </p>
+            </p> */}
             <button className="add-btn">Register</button>
           </form>
         </div>

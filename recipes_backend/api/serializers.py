@@ -3,16 +3,20 @@ from django.contrib.auth.models import User
 from recipes.models import Recipe
 
 class UserSerializer(serializers.ModelSerializer):
-    confirm = serializers.CharField(write_only=True)
+    # confirm = serializers.CharField(write_only=True)
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'password', 'email', 'confirm']
+        # fields = ['id', 'username', 'password', 'email', 'confirm']
+        fields = ['id', 'username', 'password', 'email']
 
     def validate(self, data):
 
-        if data['confirm'] != data['password']:
-            raise serializers.ValidationError({'confirm': 'Passwords do not match.'})
+        if len(data['username']) < 3 or len(data['username']) > 20:
+            raise serializers.ValidationError({'username': 'Username must be between 3 and 20 characters.'})
+        
+        # if data['confirm'] != data['password']:
+        #     raise serializers.ValidationError({'confirm': 'Passwords do not match.'})
         
         return data
 

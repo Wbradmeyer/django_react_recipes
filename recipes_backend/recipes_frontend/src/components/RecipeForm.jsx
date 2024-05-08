@@ -3,7 +3,8 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import "./style.css";
 
-const RecipeForm = () => {
+const RecipeForm = (props) => {
+  const { currentUser } = props;
   const navigate = useNavigate();
   const [recipe, setRecipe] = useState({
     name: "",

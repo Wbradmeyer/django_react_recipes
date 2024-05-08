@@ -6,6 +6,7 @@ from rest_framework import status
 from rest_framework.pagination import PageNumberPagination
 from recipes.models import Recipe
 from .serializers import RecipeSerializer, UserSerializer
+from django.contrib.auth import logout
 
 
 class RecipeListView(generics.ListAPIView):
@@ -80,3 +81,9 @@ from rest_framework.permissions import IsAuthenticated
 @permission_classes([IsAuthenticated])
 def test_token(request):
     return Response("passed for {}".format(request.user.email))
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def logout_user(request):
+    logout(request)
+    return Response({'message': 'Logout successful.'})

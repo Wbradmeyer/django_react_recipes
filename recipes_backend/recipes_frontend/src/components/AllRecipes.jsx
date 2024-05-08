@@ -3,7 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-const AllRecipes = () => {
+const AllRecipes = (props) => {
+  const { currentUser } = props;
   const [allRecipes, setAllRecipes] = useState([]);
   const [previousUrl, setPreviousUrl] = useState([]);
   const [nextUrl, setNextUrl] = useState([]);
@@ -33,9 +34,25 @@ const AllRecipes = () => {
       .catch((err) => console.log(err));
   };
 
+  const handleLogout = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:8000/api/logout", currentUser)
+      .then((res) => {
+        console.log(res);
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div className="container">
-      <h1>Recipes</h1>
+      <div>
+        <h1>Recipes</h1>
+        <button className="delete-btn" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
       <hr />
       <div className="recipes">
         {allRecipes.map((thisRecipe) => (
