@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
 
 const AllRecipes = (props) => {
-  const { currentUser } = props;
+  const { currentUser, setCurrentUser } = props;
   const navigate = useNavigate();
   const [allRecipes, setAllRecipes] = useState([]);
   const [previousUrl, setPreviousUrl] = useState([]);
@@ -44,6 +44,7 @@ const AllRecipes = (props) => {
       .then((res) => {
         console.log(res);
         localStorage.removeItem("currentUser");
+        setCurrentUser({});
         navigate("/");
       })
       .catch((err) => console.log(err));

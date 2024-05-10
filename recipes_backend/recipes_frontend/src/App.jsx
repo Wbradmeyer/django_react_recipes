@@ -27,7 +27,12 @@ function App() {
             <Route element={<PrivateRoutes currentUser={currentUser} />}>
               <Route
                 path="/recipes"
-                element={<AllRecipes currentUser={currentUser} />}
+                element={
+                  <AllRecipes
+                    currentUser={currentUser}
+                    setCurrentUser={setCurrentUser}
+                  />
+                }
               />
               <Route path="/recipes/add" element={<RecipeForm />} />
               <Route path="/recipes/:id" element={<GetRecipe />} />
