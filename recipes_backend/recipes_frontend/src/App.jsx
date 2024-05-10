@@ -17,7 +17,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        {currentUser ? <NavBar currentUser={currentUser} /> : null}
+        <NavBar currentUser={currentUser} />
         <div>
           <Routes>
             <Route
