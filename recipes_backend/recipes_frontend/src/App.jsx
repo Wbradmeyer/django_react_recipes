@@ -25,7 +25,10 @@ function App() {
               element={<Index setCurrentUser={setCurrentUser} />}
             />
             <Route element={<PrivateRoutes currentUser={currentUser} />}>
-              <Route path="/recipes" element={<AllRecipes />} />
+              <Route
+                path="/recipes"
+                element={<AllRecipes currentUser={currentUser} />}
+              />
               <Route path="/recipes/add" element={<RecipeForm />} />
               <Route path="/recipes/:id" element={<GetRecipe />} />
               <Route path="/recipes/update/:id" element={<UpdateRecipe />} />

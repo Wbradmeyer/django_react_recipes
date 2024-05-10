@@ -22,8 +22,12 @@ const Index = (props) => {
     e.preventDefault();
     axios
       .post("http://localhost:8000/api/register", user)
+      // {
+      //   withCredentials: true,
+      // })
       .then((res) => {
         console.log(res.data);
+        localStorage.setItem("currentUser", JSON.stringify(res.data));
         setCurrentUser(res.data);
         navigate("/recipes");
       })
@@ -38,8 +42,10 @@ const Index = (props) => {
     e.preventDefault();
     axios
       .post("http://localhost:8000/api/login", user)
+      // , { withCredentials: true })
       .then((res) => {
         console.log(res.data);
+        localStorage.setItem("currentUser", JSON.stringify(res.data));
         setCurrentUser(res.data);
         navigate("/recipes");
       })

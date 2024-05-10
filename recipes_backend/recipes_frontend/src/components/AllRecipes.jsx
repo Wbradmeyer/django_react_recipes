@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
 
 const AllRecipes = (props) => {
   const { currentUser } = props;
+  const navigate = useNavigate();
   const [allRecipes, setAllRecipes] = useState([]);
   const [previousUrl, setPreviousUrl] = useState([]);
   const [nextUrl, setNextUrl] = useState([]);
@@ -37,9 +38,12 @@ const AllRecipes = (props) => {
   const handleLogout = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8000/api/logout", currentUser)
+      .post("http://localhost:8000/api/logout", null, {
+        headers: { Authorization: `Token ${currentUser.token}` },
+      })
       .then((res) => {
         console.log(res);
+        localStorage.removeItem("currentUser");
         navigate("/");
       })
       .catch((err) => console.log(err));

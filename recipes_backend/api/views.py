@@ -74,7 +74,7 @@ def register(request):
 
 from rest_framework.decorators import authentication_classes, permission_classes
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 @api_view(['GET'])
 @authentication_classes([SessionAuthentication, TokenAuthentication])
@@ -83,7 +83,7 @@ def test_token(request):
     return Response("passed for {}".format(request.user.email))
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+@permission_classes([AllowAny])
 def logout_user(request):
     logout(request)
     return Response({'message': 'Logout successful.'})
