@@ -20,7 +20,7 @@ const NavBar = () => {
           }}
         >
           <Link to={"/"} className="link">
-            Index
+            Register
           </Link>
           <Link to={"/recipes"} className="link">
             Dashboard
